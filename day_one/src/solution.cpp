@@ -45,7 +45,7 @@ bool check_if_sum_of_two_numbers_in_vector_positives(std::vector<int> &vec, int 
     return false;
 }
 
-//main function
+/* //main function
 int main()
 {
     //create vector with random integers
@@ -59,4 +59,4 @@ int main()
     std::cout << check_if_sum_of_two_numbers_in_vector(vec, sum) << std::endl;
     //std::cout << check_if_sum_of_two_numbers_in_vector_positives(vec, sum) << std::endl;
     return 0;
-}
+} */
