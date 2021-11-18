@@ -4,18 +4,18 @@
 #include <iostream>
 #include <memory>
 
+//create tree node shared_ptr
 struct Node
 {
-    const std::string &val;
-    std::shared_ptr<Node> left;
-    std::shared_ptr<Node> right;
-
-    Node(const std::string &str, std::shared_ptr<Node> lft = nullptr, std::shared_ptr<Node> rite = nullptr) : val{str}, left{lft}, right{rite}
-    {
-    }
+    std::string val;
+    Node *left;
+    Node *right;
+    Node(std::string val, Node *left = nullptr, Node *right = nullptr) : val(val), left(left), right(right) {}
 };
 
-std::string serialize(const std::shared_ptr<Node> node);
-std::shared_ptr<Node> deserialize(const std::string &bytes);
-
+namespace naive
+{
+    std::string serialize(const Node *node);
+    Node *deserialize(const std::string &bytes);
+}
 #endif

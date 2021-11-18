@@ -13,13 +13,10 @@ void ExpectEqualNode(const std::shared_ptr<Node> node1, const std::shared_ptr<No
 
 TEST(DayThree, ExampleTest)
 {
-    std::shared_ptr<Node> head = std::make_shared<Node>(
-        "root",
-        std::make_shared<Node>("left", std::make_shared<Node>("left.left")),
-        std::make_shared<Node>("right"));
-
-    std::shared_ptr<Node> output_head = deserialize(serialize(head));
-
+    using namespace naive;
+    Node *head = new Node("root", new Node("left", new Node("left.left")), new Node("right"));
+    std::cout << serialize(head) << std::endl;
+    Node *output_head = deserialize(serialize(head));
     ASSERT_TRUE(output_head != nullptr);
     ASSERT_TRUE(output_head->left->left->val == "left.left");
 }
