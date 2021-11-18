@@ -11,6 +11,24 @@ void ExpectEqualNode(const std::shared_ptr<Node> node1, const std::shared_ptr<No
     ASSERT_EQ(node1->right, node2->right);
 }
 
+void DeleteTree(Node *head)
+{
+    if (head == nullptr)
+        return;
+
+    if (head->left != nullptr)
+    {
+        DeleteTree(head->left);
+        head->left = nullptr;
+    }
+    if (head->left != nullptr)
+    {
+        DeleteTree(head->right);
+        head->right = nullptr;
+    }
+    delete head;
+}
+
 TEST(DayThree, ExampleTest)
 {
     using namespace naive;
@@ -19,6 +37,7 @@ TEST(DayThree, ExampleTest)
     Node *output_head = deserialize(serialize(head));
     ASSERT_TRUE(output_head != nullptr);
     ASSERT_TRUE(output_head->left->left->val == "left.left");
+    DeleteTree(head);
 }
 
 int main(int argc, char **argv)
