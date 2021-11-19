@@ -1,4 +1,6 @@
 .vscode
 a.out
 build*
+*.pyc
+__pycache__
 
