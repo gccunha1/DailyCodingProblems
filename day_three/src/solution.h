@@ -16,6 +16,6 @@ struct Node
 namespace naive
 {
     std::string serialize(const Node *node);
-    Node *deserialize(const std::string &bytes);
+    Node *deserialize(std::string &bytes);
 }
 #endif
