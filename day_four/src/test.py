@@ -14,7 +14,7 @@ class TestSolution(unittest.TestCase):
         self.expected_output_test([5, 6, 7, 8, 4, 3, 1, 2], 9)
 
     def test_random_list(self):
-        random_list = [random.randrange(1, 10000, 1) for i in range(1000)]
+        random_list = [random.randrange(1, 10000, 1) for i in range(1000000)]
         sorted_list = list(dict.fromkeys(sorted(random_list)))
 
         answer = 1
