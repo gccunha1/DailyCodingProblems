@@ -3,4 +3,4 @@ a.out
 build*
 *.pyc
 __pycache__
-
+*.py.swp
