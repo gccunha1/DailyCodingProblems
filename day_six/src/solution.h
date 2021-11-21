@@ -24,7 +24,12 @@ private:
     {
         if (current_node == nullptr)
             return nullptr;
-        return (Node *)((std::uintptr_t)current_node->both ^ (std::uintptr_t)previous_node);
+        return NodeXOR(current_node->both, previous_node);
+    }
+
+    Node *NodeXOR(Node *node1, Node *node2)
+    {
+        return reinterpret_cast<Node *>(reinterpret_cast<std::uintptr_t>(node1) ^ reinterpret_cast<std::uintptr_t>(node2));
     }
 
 public:
@@ -60,8 +65,8 @@ public:
             tail = new_node;
             return;
         }
-        tail->both = (Node *)((std::uintptr_t)tail->both ^ (std::uintptr_t)new_node);
-        new_node->both = (Node *)((std::uintptr_t)new_node->both ^ (std::uintptr_t)tail);
+        tail->both = NodeXOR(tail->both, new_node);
+        new_node->both = NodeXOR(new_node->both, tail);
         tail = new_node;
     }
     T Get(int index)
