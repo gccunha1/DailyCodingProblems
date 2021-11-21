@@ -3,6 +3,7 @@
 
 #include <ostream>
 #include <iostream>
+#include <cstdint>
 
 template <class T>
 class EfficientDoubleLinkedList
@@ -23,7 +24,7 @@ private:
     {
         if (current_node == nullptr)
             return nullptr;
-        return (Node *)((uint64_t)current_node->both ^ (uint64_t)previous_node);
+        return (Node *)((std::uintptr_t)current_node->both ^ (std::uintptr_t)previous_node);
     }
 
 public:
@@ -59,8 +60,8 @@ public:
             tail = new_node;
             return;
         }
-        tail->both = (Node *)((uint64_t)tail->both ^ (uint64_t)new_node);
-        new_node->both = (Node *)((uint64_t)new_node->both ^ (uint64_t)tail);
+        tail->both = (Node *)((std::uintptr_t)tail->both ^ (std::uintptr_t)new_node);
+        new_node->both = (Node *)((std::uintptr_t)new_node->both ^ (std::uintptr_t)tail);
         tail = new_node;
     }
     T Get(int index)
