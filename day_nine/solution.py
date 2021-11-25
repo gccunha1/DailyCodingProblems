@@ -1,19 +1,27 @@
-def get_largest_sum_of_non_adjacent_numbers(list, start):
-    step_possibilities = list[start + 2 :]
+import random
 
+
+numbers_list = [2, 4, 6, 2, 5]
+numbers_list = [random.randrange(-5, 30, 1) for i in range(100)]
+print(numbers_list)
+
+
+def get_largest_sum_of_non_adjacent_numbers(start):
+    # @TODO Better solution bc this one is bad
     max_sum = 0
-    print(step_possibilities)
-    for idx, val in enumerate(step_possibilities):
-        path_sum = get_largest_sum_of_non_adjacent_numbers(step_possibilities, idx)
+    for idx, val in enumerate(numbers_list[start + 2 :]):
+        if val <= 0:
+            continue
+        path_sum = get_largest_sum_of_non_adjacent_numbers(idx + start + 2)
         if path_sum >= max_sum:
             max_sum = path_sum
 
     if start >= 0:
-        print(f"I'm {start} returning: {list[start] + max_sum}")
-        return list[start] + max_sum
+        print(f"I'm {start} returning: {numbers_list[start] + max_sum}")
+        return numbers_list[start] + max_sum
     return max_sum
 
 
 if __name__ == "__main__":
-    numbers_list = [5, 1, 1, 5]
-    print(get_largest_sum_of_non_adjacent_numbers(numbers_list, -2))
+
+    print(get_largest_sum_of_non_adjacent_numbers(-2))
