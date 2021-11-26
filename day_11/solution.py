@@ -1,5 +1,5 @@
 def read_words_from_file():
-    file = open("word_list.txt", "r")
+    file = open("one_million_words.txt", "r")
     words_list = file.read().splitlines()
     return words_list
 
